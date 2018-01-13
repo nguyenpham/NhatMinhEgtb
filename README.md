@@ -20,11 +20,6 @@ Some popular egtbs such as Nalimov, Gaviota and Sygyzy have been used to compare
 
 Brief: DTM; handle enpassant but not castle rights; keep only one-side data; 3.1 GB for all 3-4-5 endgames.
 
-Metric: DTM (similar to Nalimov / Gaviota).
-Enpassants: yes
-Castle rights: no
-Men: 3 - 4 - 5 men
-
 Index space (similar to Nalimov):
 - Use triangle for pawnless endgames, half board for pawn endgames
 - Pawns occupy ranks 2-7
@@ -32,19 +27,25 @@ Index space (similar to Nalimov):
 - Kings never can be near each other, two kings combination take only 564 (for pawnless endgames) or 1806 (for pawn endgames)
 - Two, three or four identical pieces (XX, XXX, XXXX) could be reduced further
 
-For all 3-4-5 men the index space is about 19.9 G. It may take about 40 GB to store (a bit larger than Gaviota - 38 GB)
-Compress algorithms: Lzma, level 9, 4kb blocks (similar to Gaviota)
-Permutation: test with all orders (similar to Sygyzy)
-One side data has been discurded to save space (similar to Sygyzy)
+Techniques:
+- Metric: DTM (similar to Nalimov / Gaviota).
+- Enpassants: yes
+- Castle rights: no
+- For all 3-4-5 men the index space is about 19.9 G. It may take about 40 GB to store (a bit larger than Gaviota - 38 GB)
+- Compress algorithms: Lzma, level 9, 4kb blocks (similar to Gaviota)
+- Permutation: test with all orders (similar to Sygyzy)
+- One side data has been discurded to save space (similar to Sygyzy)
 
 
 Download
 -----------
 
 (3+4 men come with probing source code already)
+
 - [3 men](https://drive.google.com/open?id=1Y_LSOFiROXbU6oR_-VGIzf3a4eks8uNI)
 - [4 men](https://drive.google.com/open?id=1zAEyRwxTf1AyFClAUhcGQ10KsV8rajGN)
 - [5 men pawnless](https://drive.google.com/open?id=1k3nW37k6vuJK8TkRt2rfAqzapnLFZ_Dw)
+- [5 men pawn (4+1p)](https://drive.google.com/open?id=1mnMX9czIovupSX01APZppdxr-AqQVyew)
 - [5 men pawn with queen (3+2qp)](https://drive.google.com/open?id=1ESvyT-O9pxWNOSGpdu101iNXjDnmtyFA)
 - [5 men pawn without queen (3+2p)](https://drive.google.com/open?id=1df5l_LFqRc-DSsouIGa-JfzQ-aPhf3UO)
 
