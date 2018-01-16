@@ -1,24 +1,23 @@
 NhatMinh Egtb - A Chess Endgame tablebase
 ==========
 
+
 Overview
 ----------
 
-NhatMinh Egtb is a chess endgame database (tablebase) released with 3-4-5 endgames and probing code. The probing code is  written in C++ (using standad C++11 library). Chess developer could use this to add freely and quickly tablebase probing to their chess engines.
+NhatMinh Egtb is a chess endgame database (tablebase) released with 3-4-5 endgames and probing code. The probing code is  written in C++ (using standad C++11 library). Chess developers could use this to add freely and quickly tablebase probing to their chess engines.
 
 Nothing revolutionary here. This project is simply a test base for my researches to test, verify, compare ideas and techniques which I have used for both two kinds of chess: (Western) chess and Xiangqi (Chinese chess). The Xiangqi egtb is called Felicity Egtb.
 
-Since it is mainly for reasearch, both data (egtbs) and probing code are subjects to be frequently changed.
+Since it is mainly for reasearching, both data (egtbs) and probing code are subjects to be frequently changed.
 
 
 Technique details
 --------------------
 
-Some popular egtbs such as Nalimov, Gaviota and Sygyzy have been used to compare.
+#### Alpha version (0.1)
 
-#### alpha version (0.1)
-
-Brief: DTM; handle enpassant but not castle rights; keep only one-side data; 3.1 GB for all 3-4-5 endgames.
+Brief: DTM metric; handle enpassants but not castle rights; keep only one-side data; 3.1 GB for all 3-4-5 endgames.
 
 Index space (similar to Nalimov):
 - Use triangle for pawnless endgames, half board for pawn endgames
@@ -31,7 +30,7 @@ Techniques:
 - Metric: DTM (similar to Nalimov / Gaviota).
 - Enpassants: yes
 - Castle rights: no
-- For all 3-4-5 men the index space is about 19.9 G. It may take about 40 GB to store (a bit larger than Gaviota - 38 GB)
+- For all 3-4-5 men the index space is about 19.9 G. It may take about 40 GB to store (a bit larger than uncompressed Gaviota 38 GB)
 - Compress algorithms: Lzma, level 9, 4kb blocks (similar to Gaviota)
 - Permutation: test with all orders (similar to Sygyzy)
 - One side data has been discurded to save space (similar to Sygyzy)
@@ -63,6 +62,7 @@ Working
 - Reduce sizes
 - 6 men
 
+
 Demo
 -------
 
@@ -73,14 +73,14 @@ Click to open FelicityEgtb.xcodeproj with XCode and run it
 
 #### Linux / MacOS with gcc, g++
 
-    bash comp.sh
+    bash build.sh
 
 #### Windows with VisualStudio
 Click to open VisualStudio.sln with VisualStudio  (2017) and run it
 
 
 Using
-----------
+-------
 
 To declare:
 
@@ -99,7 +99,7 @@ You may check if it could load some tablebases and print out an error message:
         std::cerr << "Error: could not load any data" << std::endl;
     }
 
-With memory mode egtb::EgtbMemMode::all as above example, all data will be loaded, auto decompressed into memory (RAM) and the library won't access external storage anymore. With mode egtb::EgtbMemMode::small, the library will load only files' headers into memory and alloc some buffers in the memory (total about few MB). If the data in those buffers are out of range (missed the caches), The library will access external storage to read data in block, decompressed and return results when probing.
+With memory mode egtb::EgtbMemMode::all as above example, all data will be loaded, auto decompressed into memory (RAM) and the library won't access external storage anymore. With mode egtb::EgtbMemMode::small, the library will load only files' headers into memory and alloc some buffers in the memory (total about few MB). If the data in those buffers are out of range (missed the caches), the probing code will access external storage to read data in block, decompressed and return results when probing.
 
 Now you may query scores (distance to mate) for any position. Your input could be FEN strings or vectors of pieces which each piece has type, side and location:
 
@@ -126,15 +126,15 @@ In case you want to compile those code manually with gcc, g++, you can use gcc t
 
 
 History
-----------
+--------
 
-13 Jan 2018: version alpha 0.01. Data size 3.1 GB
+- 13 Jan 2018: version alpha 0.1. All 3-4-5 men size 3.1 GB
 
 
 Terms of use
---------------
+---------------
 
-The files in folder lzma are copyrighted by 7-zip.org and were released under public domain.
+The files in folder lzma are copyrighted by [7-zip.org](http://7-zip.org) and were released under public domain (free).
 Our code and data (egtb files) are released under the liberal [MIT license](http://en.wikipedia.org/wiki/MIT_License), so basically you can use it with almost no restrictions.
 
 
